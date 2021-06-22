@@ -25,7 +25,7 @@ namespace Interfaces.Interfaces
         Task<PagedList<GetUserViewModel>> GetUsersWithPagination(UserParam param);
         Task<bool> IsEmailExistBefore(string email);
         Task<bool> IsUserExistInDb(string name);
-        Task<List<UserDrobDownListViewModel>> GetUserDrobDownList();
+        Task<List<UserDrobDownListViewModel>> GetUserDrobDownList(string role = null);
         Task<GetProfileViewModel> GetProfile(string id, UserParam param, string root);
         Task<EditProfileViewModel> EditProfile(string id, EditProfileViewModel model, string root);
     }

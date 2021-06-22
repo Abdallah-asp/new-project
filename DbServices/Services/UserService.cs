@@ -254,13 +254,30 @@ namespace DbServices.Services
             };
         }
 
-        public async Task<List<UserDrobDownListViewModel>> GetUserDrobDownList()
+        public async Task<List<UserDrobDownListViewModel>> GetUserDrobDownList(string role = null)
         {
-            var users = await _context.Users
-                .Select(u => new UserDrobDownListViewModel { 
-                    Id = u.Id,
-                    Name = u.Name
-                }).ToListAsync();
+            var users = new List<UserDrobDownListViewModel>();
+
+            if (role == null)
+            {
+                users = await _context.Users.Where(u => _context.UserRoles
+                .Any(r => r.RoleId != GetRoleIdByName("author") && r.UserId == u.Id))
+                    .Select(u => new UserDrobDownListViewModel
+                    {
+                        Id = u.Id,
+                        Name = u.Name
+                    }).ToListAsync();
+            }
+            else
+            {
+                users = await _context.Users.Where(u => _context.UserRoles
+                .Any(r => r.RoleId == GetRoleIdByName(role) && r.UserId == u.Id))
+                    .Select(u => new UserDrobDownListViewModel
+                    {
+                        Id = u.Id,
+                        Name = u.Name
+                    }).ToListAsync();
+            }
 
             return users;
         }
