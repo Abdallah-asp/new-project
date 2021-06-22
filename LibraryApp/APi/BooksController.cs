@@ -30,7 +30,6 @@ namespace LibraryApp.APi
         public IActionResult GetAllBooks([FromQuery]UserParam param)
         {
             var books = _repo.GetBooks(param);
-
             return Ok(books);
         }
 
