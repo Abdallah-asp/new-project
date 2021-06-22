@@ -55,7 +55,7 @@ namespace LibraryApp.Controllers
             {
                 Categories = await _repoCategory.GetCategoriesDropDownList(),
                 PublishingHouses = await _repoPublishingHouse.GetPublishingHouses(),
-                users = await _repoUser.GetUserDrobDownList()
+                users = await _repoUser.GetUserDrobDownList("author")
             };
 
             return View("BookForm", model);
