@@ -1,0 +1,125 @@
+﻿@model SavePublishingHouseViewModel
+@{
+    ViewData["Title"] = "PublishingHouseForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row page-titles mx-0">
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>Hi, welcome back!</h4>
+            <p class="mb-0">Validation</p>
+        </div>
+    </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Form</a></li>
+            <li class="breadcrumb-item active">
+                @if (Model.Id > 0) { <a href="javascript:void(0)">Update Publishing House</a> }
+                else { <a href="javascript:void(0)">Add Publishing House</a>}
+            </li>
+        </ol>
+    </div>
+</div>
+<!-- row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                @if (Model.Id > 0) { <h4 class="card-title">Update Publishing House</h4> }
+                else { <h4 class="card-title">Add Publishing House</h4> }
+            </div>
+            <div class="card-body">
+                <div class="form-validation">
+                    <form class="form-valide" asp-action="Save">
+                        <div class="row">
+                            <div class="col-xl-6">
+
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="val-username">
+                                        arabic name
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        @if (Model.Id > 0)
+                                        {<input type="hidden" asp-for="Id" />}
+                                        <input type="text" asp-for="Name_ar" class="form-control" placeholder="Enter a username..">
+                                    </div>
+                                    @Html.ValidationMessageFor(c => c.Name_ar, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="val-username">
+                                        English name
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="text" asp-for="Name_en" class="form-control" placeholder="Enter a username..">
+                                    </div>
+                                    @Html.ValidationMessageFor(c => c.Name_en, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="val-username">
+                                        Phone
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="text" asp-for="Phone" class="form-control" placeholder="Enter a phone..">
+                                    </div>
+                                    @Html.ValidationMessageFor(c => c.Phone, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="val-username">
+                                        Address
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="text" asp-for="Address" class="form-control" placeholder="Enter a address..">
+                                    </div>
+                                    @Html.ValidationMessageFor(c => c.Address, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="val-username">
+                                        Email
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="text" asp-for="Email" class="form-control" placeholder="Enter a email..">
+                                    </div>
+                                    @Html.ValidationMessageFor(c => c.Email, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="val-username">
+                                        City
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="text" asp-for="City" class="form-control" placeholder="Enter a city..">
+                                    </div>
+                                    @Html.ValidationMessageFor(c => c.City, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="val-username">
+                                        The State
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="text" asp-for="The_state" class="form-control" placeholder="Enter a the state..">
+                                    </div>
+                                    @Html.ValidationMessageFor(c => c.The_state, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6 ml-auto">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

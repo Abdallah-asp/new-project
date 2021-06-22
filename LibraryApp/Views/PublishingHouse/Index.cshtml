@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row page-titles mx-0">
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>Hi, welcome back!</h4>
+        </div>
+    </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Table</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Categories</a></li>
+        </ol>
+    </div>
+</div>
+<!-- row -->
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Categories</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example" class="display" style="min-width: 845px">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Phone</th>
+                                <th>City</th>
+                                <th>The State</th>
+                                <th>Email</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*debugger*/
+
+            var table = $("#example").DataTable({
+                "processing": true,
+                "serverSide": true,
+                "bDestroy" : true,
+                "filter": true,
+                "ajax": {
+                    "url": "/api/publishingHousies",
+                    "type": "POST",
+                    "dataType": "json"
+                },
+
+                "language": {
+                    processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> '
+                },
+                "columns": [
+
+                    { "data": "name" },
+                    { "data": "address" },
+                    { "data": "phone" },
+                    { "data": "city" },
+                    { "data": "the_state" },
+                    { "data": "email" },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<a class='btn btn-primary' style='Padding: 10px; display: inline;' href='/PublishingHouse/Update/" + data + "'>Edit</a>";
+                        }
+                    }
+                ]
+            });
+        })
+    </script>
+}
