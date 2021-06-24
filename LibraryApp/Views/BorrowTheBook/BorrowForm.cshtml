@@ -16,7 +16,14 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Form</a></li>
             <li class="breadcrumb-item active">
-                <a href="javascript:void(0)">Add Borrow</a>
+                @if (Model.Id != 0)
+                {
+                    <a href="javascript:void(0)">Update Borrow</a>
+                }
+                else
+                {
+                    <a href="javascript:void(0)">Add Borrow</a>
+                }
             </li>
         </ol>
     </div>
@@ -26,14 +33,22 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Add Borrow</h4>
+                @if (Model.Id != 0)
+                { <h4 class="card-title">Update Borrow</h4> }
+                else
+                {
+                    <h4 class="card-title">Add Borrow</h4>
+                }
             </div>
             <div class="card-body">
                 <div class="form-validation">
                     <form class="form-valide" asp-action="Save">
                         <div class="row">
                             <div class="col-xl-6">
-
+                                @if (Model.Id != 0)
+                                {
+                                    <input type="hidden" asp-for="@Model.Id"/>
+                                }
                                 <div class="form-group row">
                                     <label class="col-lg-4 col-form-label" for="val-username">
                                         Date
@@ -77,7 +92,14 @@
                                             <option value="">select...</option>
                                             @foreach (var item in Model.Colleges)
                                             {
-                                                <option value="@item.Id">@item.Name</option>
+                                                var _selected_college = "";
+
+                                                if (Model.Id > 0)
+                                                {
+                                                    if (item.Id == Model.College_id) { _selected_college = "selected"; }
+                                                }
+
+                                                <option value="@item.Id" _selected_college>@item.Name</option>
                                             }
                                         </select>
                                     </div>
@@ -90,15 +112,22 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <select class="form-control" asp-for="User_name">
+                                        <select class="form-control" asp-for="User_id">
                                             <option value="">select...</option>
                                             @foreach (var item in Model.Users)
                                             {
-                                                <option value="@item.Name">@item.Name</option>
+                                                var _selected_User = "";
+
+                                                if (Model.Id > 0)
+                                                {
+                                                    if (item.Id == Model.User_id) { _selected_User = "selected"; }
+                                                }
+
+                                                <option value="@item.Id" _selected_User>@item.Name</option>
                                             }
                                         </select>
                                     </div>
-                                    @Html.ValidationMessageFor(c => c.User_name, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(c => c.User_id, "", new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-group row">
@@ -107,15 +136,22 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <select class="form-control" asp-for="Book_name">
+                                        <select class="form-control" asp-for="Book_id">
                                             <option value="">select...</option>
                                             @foreach (var item in Model.Books)
                                             {
-                                                <option value="@item.Name">@item.Name</option>
+                                                var _selected_Book = "";
+
+                                                if (Model.Id > 0)
+                                                {
+                                                    if (item.Id == Model.Book_id) { _selected_Book = "selected"; }
+                                                }
+
+                                                <option value="@item.Id" _selected_Book>@item.Name</option>
                                             }
                                         </select>
                                     </div>
-                                    @Html.ValidationMessageFor(c => c.Book_name, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(c => c.Book_id, "", new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-group row">

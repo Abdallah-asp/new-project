@@ -48,6 +48,13 @@ namespace LibraryApp.Controllers
             return View("BorrowForm", model);
         }
 
+        public async Task<IActionResult> Update(int id)
+        {
+            var model = await _repo.GetUpdatedBorrowDataById(id);
+
+            return View("BorrowForm", model);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Save(SaveBorrowTheBookViewModel model)

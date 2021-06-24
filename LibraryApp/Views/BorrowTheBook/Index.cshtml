@@ -38,6 +38,7 @@
                                 <th>Actual return date</th>
                                 <th>Book name</th>
                                 <th>College name</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -76,6 +77,12 @@
                     { "data": "actual_return_date" },
                     { "data": "book_name" },
                     { "data": "college_name" },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<a class='btn btn-primary' style='Padding: 10px; display: inline;' href='/BorrowTheBook/Update/" + data + "'>Edit</a>"
+                        }
+                    }
                 ]
             });
         })

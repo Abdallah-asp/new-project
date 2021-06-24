@@ -11,6 +11,7 @@ namespace Interfaces.Interfaces
 {
     public interface IBorrowTheBook : IService
     {
+        Task<SaveBorrowTheBookViewModel> GetUpdatedBorrowDataById(int id);
         Task<string> SaveBorrowTheBook(SaveBorrowTheBookViewModel model);
         Task<PagedList<GetBorrowTheBookViewModel>> GetBorrowTheBooksWithPadination(UserParam param);
     }
