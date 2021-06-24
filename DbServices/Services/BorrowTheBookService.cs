@@ -39,9 +39,9 @@ namespace DbServices.Services
                 .Include(c => c.College)
                 .Select(c => new GetBorrowTheBookViewModel
                 {
-                    Date = c.Date,
-                    Borrowing_period_date = c.Borrowing_period_date,
-                    Actual_return_date = c.Actual_return_date,
+                    Date = c.Date.ToString("yyyy-MM-dd"),
+                    Borrowing_period_date = c.Borrowing_period_date.ToString("yyyy-MM-dd"),
+                    Actual_return_date = c.Actual_return_date.ToString("yyyy-MM-dd"),
                     User_name = c.User.UserName,
                     Book_name = c.Book.Name_en,
                     College_name = c.College.Name_en

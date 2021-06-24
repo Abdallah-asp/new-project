@@ -10,11 +10,11 @@ namespace Interfaces.ViewModel.BorrowTheBookVM
     {
         public int Id { get; set; }
 
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
-        public DateTime Borrowing_period_date { get; set; }
+        public string Borrowing_period_date { get; set; }
 
-        public DateTime Actual_return_date { get; set; }
+        public string Actual_return_date { get; set; }
 
         public string User_name { get; set; }
 
