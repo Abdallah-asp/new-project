@@ -19,15 +19,18 @@ namespace DbServices.Services
         private ICoreBase _repoCore;
         private IUser _repoUser;
         private IBook _repoBook;
+        private ICollege _repoCollege;
 
         public BorrowTheBookService(DataContext context,
             ICoreBase repoCore,
             IUser repoUser,
+            ICollege repoCollege,
             IBook repoBook)
         {
             _context = context;
             _repoCore = repoCore;
             _repoUser = repoUser;
+            _repoCollege = repoCollege;
             _repoBook = repoBook;
         }
 
@@ -39,6 +42,7 @@ namespace DbServices.Services
                 .Include(c => c.College)
                 .Select(c => new GetBorrowTheBookViewModel
                 {
+                    Id = c.Id,
                     Date = c.Date.ToString("yyyy-MM-dd"),
                     Borrowing_period_date = c.Borrowing_period_date.ToString("yyyy-MM-dd"),
                     Actual_return_date = c.Actual_return_date.ToString("yyyy-MM-dd"),
@@ -60,21 +64,55 @@ namespace DbServices.Services
                 .CreateAsync(borrowTheBooks, param.PageNumber, param.PageSize);
         }
 
-        public async Task<string> SaveBorrowTheBook(SaveBorrowTheBookViewModel model)
+        public async Task<SaveBorrowTheBookViewModel> GetUpdatedBorrowDataById(int id)
         {
-            BorrowTheBook borrow = new BorrowTheBook
+            var borrowData = await _context.BorrowTheBooks
+                .FirstOrDefaultAsync(b => b.Id == id);
+
+            var model = new SaveBorrowTheBookViewModel
             {
-                Date = DateTime.UtcNow,
-                Borrowing_period_date = model.Borrowing_period_date,
-                Actual_return_date = model.Actual_return_date,
-                User_id = _repoUser.GetUserIdByName(model.User_name),
-                College_id = model.College_id.Value,
-                Book_id = _repoBook.GetBookIdByName(model.Book_name)
+                Id = borrowData.Id,
+                Date = borrowData.Date,
+                Borrowing_period_date = borrowData.Borrowing_period_date,
+                Actual_return_date = borrowData.Actual_return_date,
+                Colleges = await _repoCollege.GetCollegesDrobDownList(),
+                Books = await _repoBook.GetBooksDropDownList(),
+                Users = await _repoUser.GetUserDrobDownList(),
+                College_id = borrowData.College_id,
+                User_id = borrowData.User_id,
+                Book_id = borrowData.Book_id
             };
 
-            _repoCore.Add(borrow);
+            return model;
+        }
+
+        public async Task<string> SaveBorrowTheBook(SaveBorrowTheBookViewModel model)
+        {
+            if (model.Id == 0)
+            {
+                BorrowTheBook borrow = new BorrowTheBook
+                {
+                    Date = DateTime.UtcNow,
+                    Borrowing_period_date = model.Borrowing_period_date,
+                    Actual_return_date = model.Actual_return_date,
+                    User_id = model.User_id,
+                    College_id = model.College_id.Value,
+                    Book_id = model.Book_id.Value
+                };
+
+                _repoCore.Add(borrow);
+            }
+            else
+            {
+                var borrowData = await _context.BorrowTheBooks.FindAsync(model.Id);
+
+                borrowData.Date = model.Date;
+                borrowData.Borrowing_period_date = model.Borrowing_period_date;
+                borrowData.Actual_return_date = model.Actual_return_date;
+            }
+
             await _repoCore.SaveAll();
-            
+
             return null;
         }
     }

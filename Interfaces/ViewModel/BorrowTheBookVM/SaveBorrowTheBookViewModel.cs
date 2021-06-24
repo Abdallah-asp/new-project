@@ -13,6 +13,8 @@ namespace Interfaces.ViewModel.BorrowTheBookVM
 {
     public class SaveBorrowTheBookViewModel
     {
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "This feild can't be empty")]
         public DateTime Date { get; set; }
 
@@ -23,10 +25,10 @@ namespace Interfaces.ViewModel.BorrowTheBookVM
         public DateTime Actual_return_date { get; set; }
 
         [Required(ErrorMessage = "This feild can't be empty")]
-        public string User_name { get; set; }
+        public string User_id { get; set; }
 
         [Required(ErrorMessage = "This feild can't be empty")]
-        public string Book_name { get; set; }
+        public int? Book_id { get; set; }
 
         [Required(ErrorMessage = "This feild can't be empty")]
         public int? College_id { get; set; }
