@@ -216,8 +216,8 @@ namespace DbServices.Services
                         .Select(b => new GetBorrowTheBookViewModel { 
                             Book_name = param.Lang == "en"? b.Book.Name_en : b.Book.Name_ar,
                             College_name = param.Lang == "en" ? b.College.Name_en : b.College.Name_ar,
-                            Date = b.Date,
-                            Borrowing_period_date = b.Borrowing_period_date
+                            Date = b.Date.ToString("yyyy-MM-dd"),
+                            Borrowing_period_date = b.Borrowing_period_date.ToString("yyyy-MM-dd")
                         }).ToList()
                 })
                 .FirstOrDefaultAsync();
