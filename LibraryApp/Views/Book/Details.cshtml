@@ -67,7 +67,7 @@
                         {
                             <li class="post-author mr-3">By @item.User.Name</li>
                         }
-                        <li class="post-date mr-3"><i class="fa fa-calender"></i>Published in : @Model.Book.Date_of_publication</li>
+                        <li class="post-date mr-3"><i class="fa fa-calender"></i>Published in : @Model.Book.Date_of_publication.ToString("yyyy-MM-dd")</li>
                         <li class="post-comment"><i class="fa fa-comments-o"></i>&nbsp; Pages number : 28</li>
                     </ul>
                     <p>@Model.Book.Short_description</p>
