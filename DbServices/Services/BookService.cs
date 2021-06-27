@@ -235,7 +235,7 @@ namespace DbServices.Services
             return books;
         }
 
-        public async Task<BookDetailsViewModel> bookDetails(int id, UserParam param)
+        public async Task<BookDetailsViewModel> BookDetails(int id, UserParam param)
         {
             var book = await _context.Books
                 .Include(c => c.Category)

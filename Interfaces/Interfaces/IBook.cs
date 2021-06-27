@@ -13,7 +13,7 @@ namespace Interfaces.Interfaces
     public interface IBook : IService
     {
         IQueryable<GetBookViewModel> GetBooks(UserParam param);
-        Task<BookDetailsViewModel> bookDetails(int id, UserParam param);
+        Task<BookDetailsViewModel> BookDetails(int id, UserParam param);
         Task<GetBookAndHisFeedBackViewModel> GetBookDetailsById(int id);
         Task<SaveBookViewModel> GetUpdatedBookById(int id);
         Task<Book> GetBook(int id);

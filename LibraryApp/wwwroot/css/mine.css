@@ -22,3 +22,7 @@ button[type=submit] {
 .alert-danger {
     width : 100% !important;
 }
+
+.footer .copyright {
+    background : #fff !important;
+}
