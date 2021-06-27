@@ -58,9 +58,9 @@ namespace DbServices.Services
             }
             else
             {
-                var _feedBack = await GetFeedBack(model.Id);
+                var feedBack = await GetFeedBack(model.Id);
 
-                _feedBack.Feed_back = model.Feed_back;
+                feedBack.Feed_back = model.Feed_back;
 
                 await _repoCore.SaveAll();
             }
