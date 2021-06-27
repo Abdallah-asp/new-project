@@ -45,7 +45,7 @@ namespace DbServices.Services
         {
             var emailSperated = model.Email.Split('@');
             var username = emailSperated[0] + _repoCore.GenerateRandomCodeAsNumber();
-
+                
             if (model.File == null)
             {
                 model.Image = null;
@@ -126,8 +126,9 @@ namespace DbServices.Services
         public async Task<PagedList<GetUserViewModel>> GetUsersWithPagination(UserParam param)
         {
             var users = _context.Users.Where(c => _context.UserRoles
-                .Any(x => x.RoleId == GetRoleIdByName(param.Role) && x.UserId == c.Id))
+                .Any(x => x.RoleId == GetRoleIdByName(param.Role) && x.UserId == c.Id && x.UserId != param.UserCurrentId))
                 .Select(c => new GetUserViewModel { 
+                    Id = c.Id,
                     User_name = c.UserName,
                     Name = c.Name,
                     Image = c.Image,

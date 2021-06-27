@@ -23,6 +23,8 @@ namespace Interfaces.Helpers
 
         public int SubCategoryId { get; set; }
 
+        public string UserCurrentId { get; set; }
+
         public string Key { get; set; }
 
         public int PageSize

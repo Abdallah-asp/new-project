@@ -289,7 +289,8 @@ namespace LibraryApp.APi
                     PageNumber = PageNumber,
                     PageSize = pageSize,
                     Key = searchValue,
-                    Role = "Admin"
+                    Role = "Admin",
+                    UserCurrentId = User.FindFirst(ClaimTypes.NameIdentifier).Value
                 });
 
                 // Send to View 
