@@ -39,7 +39,7 @@ namespace LibraryApp.APi
         [HttpGet]
         public async Task<IActionResult> GetDetails([FromRoute]int id, [FromQuery] UserParam param)
         {
-            var details = await _repo.bookDetails(id, param);
+            var details = await _repo.BookDetails(id, param);
 
             return Ok(details);
         }
