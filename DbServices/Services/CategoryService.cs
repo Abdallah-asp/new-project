@@ -25,6 +25,18 @@ namespace DbServices.Services
             _repoCore = repoCore;
         }
 
+        public IQueryable<GetCategoryViewModel> GetCategories(UserParam param)
+        {
+            var categories = _context.Categories
+                .Select(c => new GetCategoryViewModel
+                {
+                    Id = c.Id,
+                    Name = param.Lang == "en" ? c.Name_en : c.Name_ar
+                });
+
+            return categories;
+        }
+
         public async Task<List<GetCategoriesDrobDownListViewModel>> GetCategoriesDropDownList()
         {
             var categories = await _context.Categories
@@ -79,7 +91,7 @@ namespace DbServices.Services
         {
             if (model.Id == 0)
             {
-                Category category = new Category
+                var category = new Category
                 {
                     Name_ar = model.Name_ar,
                     Name_en = model.Name_en
@@ -89,10 +101,10 @@ namespace DbServices.Services
             }
             else
             {
-                var _category = await GetCategory(model.Id);
+                var category = await GetCategory(model.Id);
 
-                _category.Name_ar = model.Name_ar;
-                _category.Name_en = model.Name_en;
+                category.Name_ar = model.Name_ar;
+                category.Name_en = model.Name_en;
             }
 
             await _repoCore.SaveAll();
@@ -100,15 +112,6 @@ namespace DbServices.Services
             return null;
         }
 
-        IQueryable<GetCategoryViewModel> ICategory.GetCategories(UserParam param)
-        {
-            var categories = _context.Categories
-                .Select(c => new GetCategoryViewModel { 
-                    Id = c.Id,
-                    Name = param.Lang == "en"? c.Name_en : c.Name_ar
-                });
-
-            return categories;
-        }
+        
     }
 }
