@@ -33,11 +33,6 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Address</th>
-                                <th>Phone</th>
-                                <th>City</th>
-                                <th>The State</th>
-                                <th>Email</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -72,15 +67,10 @@
                 "columns": [
 
                     { "data": "name" },
-                    { "data": "address" },
-                    { "data": "phone" },
-                    { "data": "city" },
-                    { "data": "the_state" },
-                    { "data": "email" },
                     {
                         data: "id",
                         render: function (data) {
-                            return "<a class='btn btn-primary' style='Padding: 10px; display: inline;' href='/PublishingHouse/Update/" + data + "'>Edit</a>";
+                            return "<a class='btn btn-primary' style='Padding: 10px; display: inline;' href='/PublishingHouse/Update/" + data + "'>Edit</a> <a class='btn btn-info' style='Padding: 10px; display: inline;' href='/PublishingHouse/Details/" + data + "'>Details</a>";
                         }
                     }
                 ]

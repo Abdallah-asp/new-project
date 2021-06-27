@@ -28,7 +28,7 @@ namespace LibraryApp.APi
         [HttpGet]
         public IActionResult GetAllPublishingHouses([FromQuery] UserParam param)
         {
-            var publishingHouses = _repo.getPublishingHouses(param);
+            var publishingHouses = _repo.GetPublishingHouses(param);
 
             return Ok(publishingHouses);
         }
