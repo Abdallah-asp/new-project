@@ -145,15 +145,15 @@ namespace DbServices.Services
             }
             else
             {
-                var _book = await GetBook(model.Id);
+                var book = await GetBook(model.Id);
 
                 if (model.File == null)
                 {
-                    model.Image = _book.Image;
+                    model.Image = book.Image;
                 }
                 else
                 {
-                    string fullPath = root + "/" + _book.Image;
+                    string fullPath = root + "/" + book.Image;
                     if (System.IO.File.Exists(fullPath))
                     {
                         System.IO.File.Delete(fullPath);
@@ -167,16 +167,16 @@ namespace DbServices.Services
                         return "Upload failed";
                     }
 
-                    _book.Image = fileName;
+                    book.Image = fileName;
                 }
 
-                _book.Name_ar = model.Name_ar;
-                _book.Name_en = model.Name_en;
-                _book.Publishing_house_id = model.Publishing_house_id.Value;
-                _book.Pages_number = model.Pages_number;
-                _book.Short_description = _book.Short_description;
-                _book.Date_of_publication = model.Date_of_publication;
-                _book.Category_id = model.Category_id.Value;
+                book.Name_ar = model.Name_ar;
+                book.Name_en = model.Name_en;
+                book.Publishing_house_id = model.Publishing_house_id.Value;
+                book.Pages_number = model.Pages_number;
+                book.Short_description = book.Short_description;
+                book.Date_of_publication = model.Date_of_publication;
+                book.Category_id = model.Category_id.Value;
             }
 
             await _repoCore.SaveAll();

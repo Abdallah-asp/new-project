@@ -86,10 +86,10 @@ namespace DbServices.Services
             }
             else
             {
-                var _college = await GetCollege(model.Id);
+                var college = await GetCollege(model.Id);
 
-                _college.Name_ar = model.Name_ar;
-                _college.Name_en = model.Name_en;
+                college.Name_ar = model.Name_ar;
+                college.Name_en = model.Name_en;
             }
 
             await _repoCore.SaveAll();

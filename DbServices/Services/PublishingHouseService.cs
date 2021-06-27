@@ -31,24 +31,14 @@ namespace DbServices.Services
                 .Select(c => new GetPublishingHouseViewModel
                 {
                     Id = c.Id,
-                    Name = c.Name_en,
-                    Address = c.Address,
-                    Phone = c.Phone,
-                    Email = c.Email,
-                    City = c.City,
-                    The_state = c.The_state
+                    Name = c.Name_en
                 }).AsQueryable();
 
 
             if (!string.IsNullOrEmpty(param.Key))
             {
                 publishing_House = publishing_House
-                    .Where(c => c.Name.Contains(param.Key) 
-                        || c.Address.Contains(param.Key)
-                        || c.Email.Contains(param.Key)
-                        || c.Phone.Contains(param.Key)   
-                        || c.City.Contains(param.Key)
-                        || c.The_state.Contains(param.Key));
+                    .Where(c => c.Name.Contains(param.Key));
             }
 
             return await PagedList<GetPublishingHouseViewModel>
@@ -129,7 +119,7 @@ namespace DbServices.Services
             return publishing_houses;
         }
 
-        public IQueryable<GetPublishingHouseViewModel> getPublishingHouses(UserParam param)
+        public IQueryable<GetPublishingHouseViewModel> GetPublishingHouses(UserParam param)
         {
             var publishingHouses = _context.publishingHouses.
                 Select(p => new GetPublishingHouseViewModel { 
@@ -143,6 +133,22 @@ namespace DbServices.Services
                 });
 
             return publishingHouses;
+        }
+
+        public async Task<PublishingHouseDetails> GetPublishingHouseDetails(int id)
+        {
+            var publishing_House = await GetPublishingHouse(id);
+
+            return new PublishingHouseDetails
+            {
+                Id = publishing_House.Id,
+                Name = publishing_House.Name_en,
+                Address = publishing_House.Address,
+                Phone = publishing_House.Phone,
+                Email = publishing_House.Email,
+                City = publishing_House.City,
+                The_state = publishing_House.The_state
+            };
         }
     }
 }

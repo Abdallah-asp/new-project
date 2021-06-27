@@ -12,11 +12,12 @@ namespace Interfaces.Interfaces
 {
     public interface IPublishingHouse : IService
     {
-        IQueryable<GetPublishingHouseViewModel> getPublishingHouses(UserParam param);
+        IQueryable<GetPublishingHouseViewModel> GetPublishingHouses(UserParam param);
         Task<SavePublishingHouseViewModel> GetUpdatedPublishingHouseById(int id);
         Task<PublishingHouse> GetPublishingHouse(int id);
         Task<string> SavePublishingHouse(SavePublishingHouseViewModel model);
         Task<PagedList<GetPublishingHouseViewModel>> GetPublishingHousiesWithPadination(UserParam param);
         Task<List<GetPublishingHousesDrobDownListViewModel>> GetPublishingHouses();
+        Task<PublishingHouseDetails> GetPublishingHouseDetails(int id);
     }
 }

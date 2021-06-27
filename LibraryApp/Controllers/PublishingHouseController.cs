@@ -27,6 +27,13 @@ namespace LibraryApp.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Details(int id)
+        {
+            var model = await _repo.GetPublishingHouseDetails(id);
+
+            return View(model);
+        }
+
         public IActionResult Add()
         {
             var model = new SavePublishingHouseViewModel();
