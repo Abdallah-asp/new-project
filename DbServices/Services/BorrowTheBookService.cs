@@ -69,9 +69,7 @@ namespace DbServices.Services
 
             if (!string.IsNullOrEmpty(param.Key))
             {
-                borrowTheBooks = borrowTheBooks.Where(c => c.User_name.Contains(param.Key) 
-                    || c.Book_name.Contains(param.Key) 
-                    || c.College_name.Contains(param.Key));
+                borrowTheBooks = borrowTheBooks.Where(c => c.User_name.Contains(param.Key));
             }
 
             return await PagedList<GetBorrowTheBookViewModel>
