@@ -34,6 +34,24 @@ namespace DbServices.Services
             _repoBook = repoBook;
         }
 
+        public async Task<BorrowDetailsViewModel> BorrowDetails(int id)
+        {
+            var borrow = await _context.BorrowTheBooks
+                .Include(b => b.User).Include(b => b.Book).Include(b => b.College)
+                .FirstOrDefaultAsync(b => b.Id == id);
+
+            return new BorrowDetailsViewModel
+            {
+                Id = borrow.Id,
+                Date = borrow.Date.ToString("yyyy-MM-dd"),
+                Borrowing_period_date = borrow.Borrowing_period_date.ToString("yyyy-MM-dd"),
+                Actual_return_date = borrow.Actual_return_date.ToString("yyyy-MM-dd"),
+                Book_name = borrow.Book.Name_en,
+                College_name = borrow.College.Name_en,
+                User_name = borrow.User.Name
+            };
+        }
+
         public async Task<PagedList<GetBorrowTheBookViewModel>> GetBorrowTheBooksWithPadination(UserParam param)
         {
             var borrowTheBooks = _context.BorrowTheBooks
@@ -44,11 +62,7 @@ namespace DbServices.Services
                 {
                     Id = c.Id,
                     Date = c.Date.ToString("yyyy-MM-dd"),
-                    Borrowing_period_date = c.Borrowing_period_date.ToString("yyyy-MM-dd"),
-                    Actual_return_date = c.Actual_return_date.ToString("yyyy-MM-dd"),
                     User_name = c.User.UserName,
-                    Book_name = c.Book.Name_en,
-                    College_name = c.College.Name_en
                     
                 }).AsQueryable();
 

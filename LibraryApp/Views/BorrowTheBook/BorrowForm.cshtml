@@ -44,50 +44,50 @@
                 <div class="form-validation">
                     <form class="form-valide" asp-action="Save">
                         <div class="row">
-                            <div class="col-xl-6">
+                            <div class="col-xl-12">
                                 @if (Model.Id != 0)
                                 {
                                     <input type="hidden" asp-for="@Model.Id"/>
                                 }
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-username">
+                                    <label class="col-lg-3 col-form-label" for="val-username">
                                         Date
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-9">
                                         <input type="date" asp-for="Date" class="form-control" placeholder="Enter a username..">
                                     </div>
                                     @Html.ValidationMessageFor(c => c.Date, "", new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-username">
+                                    <label class="col-lg-3 col-form-label" for="val-username">
                                         Borrowing period date
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-9">
                                         <input type="date" asp-for="Borrowing_period_date" class="form-control" placeholder="Enter a username..">
                                     </div>
                                     @Html.ValidationMessageFor(c => c.Borrowing_period_date, "", new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-username">
+                                    <label class="col-lg-3 col-form-label" for="val-username">
                                         Actual return date
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-9">
                                         <input type="date" asp-for="Actual_return_date" class="form-control" placeholder="Enter a username..">
                                     </div>
                                     @Html.ValidationMessageFor(c => c.Actual_return_date, "", new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-username">
+                                    <label class="col-lg-3 col-form-label" for="val-username">
                                         College
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-9">
                                         <select class="form-control" asp-for="College_id">
                                             <option value="">select...</option>
                                             @foreach (var item in Model.Colleges)
@@ -107,11 +107,11 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-username">
+                                    <label class="col-lg-3 col-form-label" for="val-username">
                                         User
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-9">
                                         <select class="form-control" asp-for="User_id">
                                             <option value="">select...</option>
                                             @foreach (var item in Model.Users)
@@ -131,11 +131,11 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-username">
+                                    <label class="col-lg-3 col-form-label" for="val-username">
                                         Book name
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-9">
                                         <select class="form-control" asp-for="Book_id">
                                             <option value="">select...</option>
                                             @foreach (var item in Model.Books)
@@ -155,7 +155,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <div class="col-lg-6 ml-auto">
+                                    <div class="col-lg-12 ml-auto">
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
                                 </div>

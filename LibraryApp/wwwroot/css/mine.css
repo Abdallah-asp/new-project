@@ -9,3 +9,16 @@
 .deznav.show {
     left : 0;
 }
+
+table td {
+    padding-top: 18px !important;
+    padding-bottom: 18px !important;
+}
+
+button[type=submit] {
+    width : 100% ;
+}
+
+.alert-danger {
+    width : 100% !important;
+}

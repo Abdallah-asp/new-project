@@ -1,0 +1,26 @@
+﻿@model BorrowDetailsViewModel
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">name : &nbsp; @Model.User_name</h5>
+    </div>
+    <div class="card-body">
+        <p class="card-text">College : &nbsp; @Model.College_name</p>
+        <p class="card-text">Book : &nbsp; @Model.Book_name</p>
+        <p class="card-text">Date of borrow : &nbsp; @Model.Date</p>
+        <p class="card-text">Actual Date for book return : &nbsp; @Model.Actual_return_date</p>
+        <p class="card-text">Date for end borrow : &nbsp; @Model.Borrowing_period_date</p>
+    </div>
+    <div class="card-footer d-sm-flex justify-content-between align-items-center">
+        <div class="card-footer-link mb-4 mb-sm-0">
+            <p class="card-text text-dark d-inline"></p>
+        </div>
+
+        <a asp-action="Index" class="btn btn-primary">Go Back</a>
+    </div>
+</div>

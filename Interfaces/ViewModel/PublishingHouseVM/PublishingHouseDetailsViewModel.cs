@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Interfaces.ViewModel.PublishingHouseVM
 {
-    public class PublishingHouseDetails
+    public class PublishingHouseDetailsViewModel
     {
         public int Id { get; set; }
 

@@ -55,7 +55,7 @@ namespace LibraryApp.Controllers
             {
                 Categories = await _repoCategory.GetCategoriesDropDownList(),
                 PublishingHouses = await _repoPublishingHouse.GetPublishingHouses(),
-                users = await _repoUser.GetUserDrobDownList("author")
+                Users = await _repoUser.GetUserDrobDownList("author")
             };
 
             return View("BookForm", model);
@@ -77,7 +77,8 @@ namespace LibraryApp.Controllers
                 model = new SaveBookViewModel
                 {
                     Categories = await _repoCategory.GetCategoriesDropDownList(),
-                    PublishingHouses = await _repoPublishingHouse.GetPublishingHouses()
+                    PublishingHouses = await _repoPublishingHouse.GetPublishingHouses(),
+                    Users = await _repoUser.GetUserDrobDownList("author")
                 };
 
                 return View("BookForm", model);
@@ -93,7 +94,8 @@ namespace LibraryApp.Controllers
                 model = new SaveBookViewModel
                 {
                     Categories = await _repoCategory.GetCategoriesDropDownList(),
-                    PublishingHouses = await _repoPublishingHouse.GetPublishingHouses()
+                    PublishingHouses = await _repoPublishingHouse.GetPublishingHouses(),
+                    Users = await _repoUser.GetUserDrobDownList("author")
                 };
 
                 model.Error = result;

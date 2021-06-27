@@ -34,10 +34,6 @@
                             <tr>
                                 <th>User name</th>
                                 <th>Date</th>
-                                <th>Borrowing period date</th>
-                                <th>Actual return date</th>
-                                <th>Book name</th>
-                                <th>College name</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -73,14 +69,10 @@
 
                     { "data": "user_name" },
                     { "data": "date" },
-                    { "data": "borrowing_period_date" },
-                    { "data": "actual_return_date" },
-                    { "data": "book_name" },
-                    { "data": "college_name" },
                     {
                         data: "id",
                         render: function (data) {
-                            return "<a class='btn btn-primary' style='Padding: 10px; display: inline;' href='/BorrowTheBook/Update/" + data + "'>Edit</a>"
+                            return "<a class='btn btn-primary' style='Padding: 10px; display: inline;' href='/BorrowTheBook/Update/" + data + "'>Edit</a> <a class='btn btn-info' style='Padding: 10px; display: inline;' href='/BorrowTheBook/Details/" + data + "'>Details</a>"
                         }
                     }
                 ]

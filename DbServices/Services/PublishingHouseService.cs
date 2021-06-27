@@ -135,11 +135,11 @@ namespace DbServices.Services
             return publishingHouses;
         }
 
-        public async Task<PublishingHouseDetails> GetPublishingHouseDetails(int id)
+        public async Task<PublishingHouseDetailsViewModel> GetPublishingHouseDetails(int id)
         {
             var publishing_House = await GetPublishingHouse(id);
 
-            return new PublishingHouseDetails
+            return new PublishingHouseDetailsViewModel
             {
                 Id = publishing_House.Id,
                 Name = publishing_House.Name_en,

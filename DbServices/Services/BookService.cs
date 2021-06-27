@@ -85,7 +85,7 @@ namespace DbServices.Services
                 Category_id = book.Category_id,
                 Categories = await _repoCategory.GetCategoriesDropDownList(),
                 PublishingHouses = await _repoPhblishingHouse.GetPublishingHouses(),
-                users = await _repoUser.GetUserDrobDownList("author")
+                Users = await _repoUser.GetUserDrobDownList("author")
             };
 
             return model;
