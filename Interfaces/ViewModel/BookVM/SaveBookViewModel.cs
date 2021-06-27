@@ -50,7 +50,7 @@ namespace Interfaces.ViewModel.BookVM
 
         public List<GetPublishingHousesDrobDownListViewModel> PublishingHouses { get; set; }
 
-        public List<UserDrobDownListViewModel>  users { get; set; }
+        public List<UserDrobDownListViewModel>  Users { get; set; }
 
     }
 }

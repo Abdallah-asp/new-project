@@ -36,6 +36,13 @@ namespace LibraryApp.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Details(int id)
+        {
+            var model = await _repo.BorrowDetails(id);
+
+            return View(model);
+        }
+
         public async Task<IActionResult> Add()
         {
             var model = new SaveBorrowTheBookViewModel

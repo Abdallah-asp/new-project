@@ -18,6 +18,6 @@ namespace Interfaces.Interfaces
         Task<string> SavePublishingHouse(SavePublishingHouseViewModel model);
         Task<PagedList<GetPublishingHouseViewModel>> GetPublishingHousiesWithPadination(UserParam param);
         Task<List<GetPublishingHousesDrobDownListViewModel>> GetPublishingHouses();
-        Task<PublishingHouseDetails> GetPublishingHouseDetails(int id);
+        Task<PublishingHouseDetailsViewModel> GetPublishingHouseDetails(int id);
     }
 }
